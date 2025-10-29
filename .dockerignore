@@ -1,0 +1,17 @@
+# Ignore frontend (not needed in backend container)
+
+
+# Ignore dependencies (they get installed fresh in container)
+
+Queue-worker/node_modules/
+
+# Ignore logs and temp files
+*.log
+*.txt
+
+# Ignore Git
+.git
+.gitignore
+
+Queue-worker/Dockerfile*
+
