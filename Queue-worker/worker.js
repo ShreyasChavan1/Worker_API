@@ -18,6 +18,14 @@ const worker = new Worker("submissionqueue",
         const {submissionId} = job.data;
         console.log(`Worker has started Processing submission: ${submissionId}`);
 
+        const testMsg = {
+            submissionId: 'test123',
+            status: 'Processing',
+            message: 'This is a dummy message from worker'
+          };
+        
+          await pub.publish('submissionUpdates', JSON.stringify(testMsg));
+          console.log('Published dummy message to submissionUpdates');
         // let ourdoc = "";
         // let executionResult = null;
 
