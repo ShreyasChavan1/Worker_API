@@ -3,7 +3,7 @@
 
 # Ignore dependencies (they get installed fresh in container)
 
-Queue-worker/node_modules/
+Queue-worker/node_modules
 
 # Ignore logs and temp files
 *.log
@@ -13,5 +13,4 @@ Queue-worker/node_modules/
 .git
 .gitignore
 
-Queue-worker/Dockerfile*
 

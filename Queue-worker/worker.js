@@ -1,8 +1,8 @@
 const {Worker} = require("bullmq");
 const mongoose = require("mongoose");
-const oursubmission = require("../shared/submissionmode");
-const getcode = require("../shared/getFromsupabase");
-const reddisconection = require("../shared/redis")
+const oursubmission = require("./shared/submissionmode");
+const getcode = require("./shared/getFromsupabase");
+const reddisconection = require("./shared/redis")
 const axios = require("axios")
 const Redis = require('ioredis')
 
@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URI)
 .catch(err => console.error("Error while worker connecting to MongoDB:", err));
 
 
-const pub = new Redis('redis');
+const pub = new Redis(process.env.REDIS_HOST);
 const worker = new Worker("submissionqueue",
     async(job) => {
         const {submissionId} = job.data;
@@ -88,6 +88,7 @@ const worker = new Worker("submissionqueue",
         //     // Return a simple object that can be serialized
         //     return { verdict: "Error", message: err.message, RunTimeError: executionResult ? executionResult.RunTimeError : "Unknown" };
         // }
+        
     }, 
     {
         connection:reddisconection,

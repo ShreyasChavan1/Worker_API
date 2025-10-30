@@ -6,7 +6,7 @@ COPY Queue-worker/package*.json ./
 
 RUN npm install
 
-COPY Queue-worker/. .
-COPY shared ../shared
+COPY Queue-worker .
+COPY shared ./shared
 
 CMD [ "node","worker.js" ]
